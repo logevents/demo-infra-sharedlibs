@@ -1,7 +1,7 @@
 def call(String checkoutDate){
-    println("checkoutByDate using $checkoutdate")
+    println("checkoutByDate using $checkoutDate")
 
-    if(!checkoutdate.equals("now")){
+    if(!checkoutDate.equals("now")){
         sh 'git rev-list -1 --before="$checkoutdate" --date="format:dd.mm.yyyy" origin/master'
         sh 'git checkout `git rev-list -1 --before="$checkoutdate" --date="format:dd.mm.yyyy" origin/master`'
     }else{
