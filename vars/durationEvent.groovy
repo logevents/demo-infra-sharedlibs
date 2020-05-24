@@ -2,8 +2,9 @@ import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 
 def call(def event, Closure closure) {
-    def timestamp = ZonedDateTime.now().format(DateTimeFormatter.ISO_OFFSET_DATE_TIME)
-    echo "${timestamp}|duration|start|$event"
+    def startTs = ZonedDateTime.now().format(DateTimeFormatter.ISO_OFFSET_DATE_TIME)
+    echo "${startTs}|duration|start|$event"
     closure()
-    echo "${timestamp}|duration|end|$event"
+    def endTs = ZonedDateTime.now().format(DateTimeFormatter.ISO_OFFSET_DATE_TIME)
+    echo "${endTs}|duration|end|$event"
 }
